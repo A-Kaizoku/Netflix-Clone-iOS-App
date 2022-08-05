@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    
+    let sectionTitles:[String]=["Trending Movies", "Popular", "Trending Tv", "Upcoming Movies", "Top rated"]
     
     private var homeFeedTable : UITableView = {
         
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         
         // tableHeaderView gives header to the whole table
         
-        let headerView=HeroHeaderUIView.init(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        let headerView=HeroHeaderUIView.init(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: 475))
         homeFeedTable.tableHeaderView=headerView
     }
     
@@ -61,7 +61,19 @@ class HomeViewController: UIViewController {
 extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 20
+        return sectionTitles.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else {return}
+        header.textLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        header.textLabel?.frame = CGRect(x: header.bounds.origin.x, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
+        header.textLabel?.textColor = .white
+        header.textLabel?.text=header.textLabel?.text?.lowercased()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
