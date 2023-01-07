@@ -39,7 +39,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
     //using this method we'll call the url through which we will fetch the movie/series poster image
     
     public func configure(with Model:String){
-        guard let url=URL(string: "https://image.tmdb.org/t/p/w500\(Model)") else {return}
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(Model)") else {return}
         print(url)
         posterImageView.sd_setImage(with: url,completed: nil)
     }

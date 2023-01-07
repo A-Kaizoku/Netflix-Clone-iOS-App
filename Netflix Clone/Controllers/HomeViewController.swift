@@ -7,22 +7,22 @@
 
 import UIKit
 
-enum Sections:Int{
-    case TrendingMovies=0
-    case TrendingTv=1
-    case Popular=2
-    case Upcoming=3
-    case TopRated=4
+enum Sections : Int {
+    case TrendingMovies = 0
+    case TrendingTv = 1
+    case Popular = 2
+    case Upcoming = 3
+    case TopRated = 4
 }
 
 class HomeViewController: UIViewController {
     
-    let sectionTitles:[String]=["Trending Movies", "Trending Tv", "Popular",  "Upcoming Movies", "Top rated"]
+    let sectionTitles: [String] = ["Trending Movies", "Trending Tv", "Popular",  "Upcoming Movies", "Top rated"]
     
-    private var homeFeedTable : UITableView = {
+    private var homeFeedTable: UITableView = {
         
         //frame and style are provided to tell the tableView that we need headers
-        let table=UITableView(frame: .zero, style: .grouped)
+        let table: UITableView = UITableView(frame: .zero, style: .grouped)
         table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
         return table
     }()
@@ -33,23 +33,23 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(homeFeedTable)
         
-        homeFeedTable.dataSource=self
-        homeFeedTable.delegate=self
+        homeFeedTable.dataSource = self
+        homeFeedTable.delegate = self
         
         configureNavbar()
         
         // tableHeaderView gives header to the whole table
         
-        let headerView=HeroHeaderUIView.init(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: 475))
-        homeFeedTable.tableHeaderView=headerView
+        let headerView = HeroHeaderUIView.init(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: 475))
+        homeFeedTable.tableHeaderView = headerView
     }
     
     private func configureNavbar(){
-        var image=UIImage(named:"netflixLogo")
+        var image = UIImage(named:"netflixLogo")
         //render the original image without changing inside color
         
-        image=image?.resizeImageTo(size: CGSize(width: 30, height: 50))
-        image=image?.withRenderingMode(.alwaysOriginal)
+        image = image?.resizeImageTo(size: CGSize(width: 30, height: 50))
+        image = image?.withRenderingMode(.alwaysOriginal)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
         
@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        homeFeedTable.frame=view.bounds
+        homeFeedTable.frame = view.bounds
     }
 }
 
@@ -80,7 +80,7 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource{
         header.textLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
         header.textLabel?.textColor = .white
-        header.textLabel?.text=header.textLabel?.text?.capitalFirstLetter()
+        header.textLabel?.text = header.textLabel?.text?.capitalFirstLetter()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

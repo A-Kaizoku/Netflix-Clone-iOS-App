@@ -16,9 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // since we are not using main storyboard we need to set the rootViewController to our ViewController file.
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window=UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene=windowScene
-        window?.rootViewController=MainTabBarViewController()
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.rootViewController = MainTabBarViewController()
         window?.makeKeyAndVisible()
     }
     
