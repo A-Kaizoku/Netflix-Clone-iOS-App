@@ -22,7 +22,7 @@ class CollectionViewTableViewCell: UITableViewCell {
     
     static let identifier = "CollectionViewTableViewCell"
     
-    private var titles:[Title]=[Title]()
+    private var titles: [Title] = [Title]()
     
     
     //steps to create a CollectionView denoted by numbers
@@ -31,12 +31,12 @@ class CollectionViewTableViewCell: UITableViewCell {
     private let collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         
-        //6) its important to give layout the scrollDirection and itemSize (for cell) otherwise it wont have any size to follw and take a very compact size
+        //6) its important to give layout the scrollDirection and itemSize (for cell) otherwise it wont have any size to follow and take a very compact size
         layout.scrollDirection = .horizontal
-        layout.itemSize=CGSize(width: 140, height: 200)
+        layout.itemSize = CGSize(width: 140, height: 200)
         
         
-        let collectionView=UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: TitleCollectionViewCell.identifier)
         return collectionView
     }()

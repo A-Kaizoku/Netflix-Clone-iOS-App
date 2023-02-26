@@ -18,16 +18,16 @@ enum APIError:Error{
 }
 
 class APICaller{
-    static let shared=APICaller()
+    static let shared = APICaller()
     
     func getTrendingMovies(completion: @escaping (Result<[Title], Error>)->Void) {
         guard let url = URL(string: "\(Constants.baseURL)3/trending/movie/week?api_key=\(Constants.API_KEY)") else {return}
         
-        let task=URLSession.shared.dataTask(with: URLRequest(url:url)) { data, _, error in
-            guard let data = data, error==nil else {
+        let task = URLSession.shared.dataTask(with: URLRequest(url:url)) { data, _, error in
+            guard let data = data, error == nil else {
                 return
             }
-            do{
+            do {
 //            let results = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
 //                print(results)
                 
@@ -35,7 +35,7 @@ class APICaller{
                 completion(.success(results.results))
                 
             }
-            catch{
+            catch {
                 completion(.failure(APIError.failedToGetData))
             }
 
@@ -47,8 +47,8 @@ class APICaller{
     func getTrendingTvs(completion: @escaping (Result<[Title], Error>)->Void) {
         guard let url = URL(string: "\(Constants.baseURL)3/trending/tv/week?api_key=\(Constants.API_KEY)") else {return}
         
-        let task=URLSession.shared.dataTask(with: URLRequest(url:url)) { data, _, error in
-            guard let data = data, error==nil else {
+        let task = URLSession.shared.dataTask(with: URLRequest(url:url)) { data, _, error in
+            guard let data = data, error == nil else {
                 return
             }
             do{
@@ -73,8 +73,8 @@ class APICaller{
     //https://api.themoviedb.org/3/movie/upcoming?api_key=f9446bbfaf40a3288469fa19024512c0&language=en-US&page=1
         guard let url = URL(string: "\(Constants.baseURL)3/movie/upcoming?api_key=\(Constants.API_KEY)&language=en-US&page=1") else {return}
         
-        let task=URLSession.shared.dataTask(with: URLRequest(url:url)) { data, _, error in
-            guard let data = data, error==nil else {
+        let task = URLSession.shared.dataTask(with: URLRequest(url:url)) { data, _, error in
+            guard let data = data, error == nil else {
                 return
             }
             do{
@@ -95,8 +95,8 @@ class APICaller{
         
         guard let url = URL(string: "\(Constants.baseURL)3/movie/popular?api_key=\(Constants.API_KEY)&language=en-US&page=1") else {return}
         
-        let task=URLSession.shared.dataTask(with: URLRequest(url:url)) { data, _, error in
-            guard let data = data, error==nil else {
+        let task = URLSession.shared.dataTask(with: URLRequest(url:url)) { data, _, error in
+            guard let data = data, error == nil else {
                 return
             }
             do{

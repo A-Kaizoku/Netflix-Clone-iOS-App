@@ -59,6 +59,7 @@ class HomeViewController: UIViewController {
         navigationController?.hidesBarsOnSwipe = true
     }
     
+    // give frame to the newly added subview (homeFeedTable)
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
