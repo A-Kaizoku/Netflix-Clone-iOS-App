@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     private var homeFeedTable: UITableView = {
         
         //frame and style are provided to tell the tableView that we need headers
+        //frame is .zero because we have later on defined the frame in viewDidLayoutSubviews()
         let table: UITableView = UITableView(frame: .zero, style: .grouped)
         table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
         return table

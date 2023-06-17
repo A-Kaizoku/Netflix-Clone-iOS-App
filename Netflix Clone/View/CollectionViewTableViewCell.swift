@@ -35,7 +35,6 @@ class CollectionViewTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 140, height: 200)
         
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: TitleCollectionViewCell.identifier)
         return collectionView
@@ -82,7 +81,7 @@ extension CollectionViewTableViewCell : UICollectionViewDelegate,UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCollectionViewCell.identifier, for: indexPath) as? TitleCollectionViewCell
                 else {return UICollectionViewCell()}
 
-        guard let model=titles[indexPath.row].poster_path else {
+        guard let model = titles[indexPath.row].poster_path else {
             return UICollectionViewCell()
         }
         cell.configure(with: model)
