@@ -79,7 +79,7 @@ class APICaller {
         task.resume()
     }
     
-    func getPopularMovies (completion: @escaping (Result<[Title], Error>)->Void) {
+    func getPopularMovies(completion: @escaping (Result<[Title], Error>)->Void) {
         
         guard let url: URL = URL(string: "\(Constants.baseURL)3/movie/popular?api_key=\(Constants.API_KEY)&language=en-US&page=1") else {return}
         
@@ -97,7 +97,7 @@ class APICaller {
         task.resume()
     }
     
-    func getTopRatedMovies (completion: @escaping (Result<[Title], Error>)->Void) {
+    func getTopRatedMovies(completion: @escaping (Result<[Title], Error>)->Void) {
         
         guard let url: URL = URL(string: "\(Constants.baseURL)3/movie/popular?api_key=\(Constants.API_KEY)&language=en-US&page=1") else { return }
         
