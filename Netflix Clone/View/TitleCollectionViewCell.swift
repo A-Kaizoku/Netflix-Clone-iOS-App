@@ -13,7 +13,6 @@ class TitleCollectionViewCell: UICollectionViewCell {
     static let identifier = "TitleCollectionViewCell"
     
     let posterImageView : UIImageView = {
-        
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         return imageView
@@ -31,16 +30,15 @@ class TitleCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        posterImageView.frame=contentView.bounds
-        
+        posterImageView.frame = contentView.bounds
     }
     
     
     //using this method we'll call the url through which we will fetch the movie/series poster image
     
-    public func configure(with Model:String){
-        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(Model)") else {return}
-        print(url)
+    public func configure(with Model: String) {
+        guard let url: URL = URL(string: "https://image.tmdb.org/t/p/w500\(Model)") else { return }
+        //print(url)
         posterImageView.sd_setImage(with: url,completed: nil)
     }
     

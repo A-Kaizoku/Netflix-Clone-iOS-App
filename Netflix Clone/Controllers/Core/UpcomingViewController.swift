@@ -28,7 +28,8 @@ class UpcomingViewController: UIViewController {
     /// = { ... }(): This is an immediately-invoked closure (sometimes called a "self-executing closure" or "auto-invoking closure"). The curly braces { ... } define the closure, and the () at the end immediately invokes it. This means that the code within the curly braces is executed right at the moment when upcomingTable is declared.
     private var upcomingTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.separatorStyle = .none
+        table.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
         return table
     }()
     
@@ -61,11 +62,14 @@ extension UpcomingViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        //cell.tintColor = .red
-        //cell.backgroundColor = .systemPink
-        cell.textLabel?.text = titles[indexPath.row].original_name ?? titles[indexPath.row].original_title ?? "Unknown"
+        guard let cell: TitleTableViewCell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as? TitleTableViewCell else { return UITableViewCell() }
+        let title = titles[indexPath.row]
+        cell.configure(with: TitleViewModel(titleName: (title.original_name ?? title.original_title) ?? "Unknown titlename ", posterURL: title.poster_path ?? ""))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
     }
 }
